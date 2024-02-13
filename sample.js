@@ -8,7 +8,7 @@
 } */
 /* const substract = (a, b) => a - b; */
 
-const { sum, substract } = require("./math");
+const { sum, substract, sumAsync, substractAsync } = require("./math");
 
 /* function sumTest() {
   const result = sum(5, 5);
@@ -19,11 +19,11 @@ const { sum, substract } = require("./math");
 test("Adds two Number", sumTest); */
 
 //for shortcut
-test("Add two Number", () => {
+/* test("Add two Number", () => {
   const result = sum(5, 5);
   const expected = 10;
   expect(result).toBe(expected);
-});
+}); */
 
 /* if (result != expected) {
   throw new Error(`${result} is not equal to ${expected}`);
@@ -31,9 +31,9 @@ test("Add two Number", () => {
   console.log(`All test passed`);
 } */
 
-function test(title, callback) {
+async function test(title, callback) {
   try {
-    callback();
+    await callback();
     console.log("success", title);
   } catch (e) {
     console.log("error", title);
@@ -50,8 +50,18 @@ function test(title, callback) {
 test("Subtracts two numbers", subtractTest); */
 
 //for shortcut
-test("Subtract two number", () => {
+/* test("Subtract two number", () => {
   const result = substract(5, 4);
+  const expected = 1;
+  expect(result).toBe(expected);
+}); */
+test("Subtract two number", async () => {
+  const result = await sumAsync(5, 4);
+  const expected = 9;
+  expect(result).toBe(expected);
+});
+test("Subtract two number", async () => {
+  const result = await substractAsync(5, 4);
   const expected = 1;
   expect(result).toBe(expected);
 });
