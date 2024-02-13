@@ -10,9 +10,20 @@
 
 const { sum, substract } = require("./math");
 
-let result = sum(5, 5);
-let expected = 10;
-expect(result).toBe(expected);
+/* function sumTest() {
+  const result = sum(5, 5);
+  const expected = 10;
+  expect(result).toBe(expected);
+}
+
+test("Adds two Number", sumTest); */
+
+//for shortcut
+test("Add two Number", () => {
+  const result = sum(5, 5);
+  const expected = 10;
+  expect(result).toBe(expected);
+});
 
 /* if (result != expected) {
   throw new Error(`${result} is not equal to ${expected}`);
@@ -20,9 +31,30 @@ expect(result).toBe(expected);
   console.log(`All test passed`);
 } */
 
-result = substract(5, 4);
-expected = 1;
-expect(result).toBe(expected);
+function test(title, callback) {
+  try {
+    callback();
+    console.log("success", title);
+  } catch (e) {
+    console.log("error", title);
+    console.error(e);
+  }
+}
+
+/* function subtractTest() {
+  const result = substract(5, 4);
+  const expected = 1;
+  expect(result).toBe(expected);
+}
+
+test("Subtracts two numbers", subtractTest); */
+
+//for shortcut
+test("Subtract two number", () => {
+  const result = substract(5, 4);
+  const expected = 1;
+  expect(result).toBe(expected);
+});
 
 /* if (result != expected) {
   throw new Error(`${result} is not equal to ${expected}`);
